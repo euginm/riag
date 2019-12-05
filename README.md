@@ -46,30 +46,33 @@ The tools are looked up in `PATH`, or paths to their executables are taken from 
 ## Input
 The input arguments are provided via `config.sh`.
 `01_predict_rdna.sh` arguments:
+
 | Argument | Description |
-| ------ | ------ |
-| **`out_dir`** | Directory for output files, will be created if not found
-| **`lr_dir`** | Directory containing raw long reads (multiple) files in FASTA/Q format, can be gzipped
-| **`tmp_dir`** | Directory for temp files, will be created if not found. **Default**: `TMPDIR` environment variable
-| **`prefix`** | Prefix for all output files. **Default**: 'rdna_pipeline'
-| **`lr_coverage`** | Long reads sequencing depth, used for rDNA copy number estimation
-| **`lr_to_assembly_bam_path`** | BAM file with all long reads mapped to (draft) genome assembly, used to compute PacBio sequencing depth, if `pacbio_coverage` not provided
-| **`assembly_path`** | Path to (draft) genome assembly, used as a reference for mapping long reads and sequencing depth estimation, if neither `pacbio_coverage` nor `pacbio_to_assembly_bam_path` provided
-| **`threads`** | Number of CPUs to use (40 or more recommended). **Default**: number of available CPUs
-| **`evalue`** | Maximum e-value for predicted rDNA subunits to keep them in the analysis. **Default**: '1e-06'
-| **`rdna_repeat_size`** | Approximate length of rDNA repeat (rRNA gene + intergenic spacer). Used by Flye assembler,  **Default**: '30k'
-| **`n_polish_iterations`** | Number of assembly polishing iterations, Flye parameter. **Default**: 3
-| **`lr_type`**| Parameter for Flye assembler, possible values: 'pacbio-raw', 'nano-raw'. **Default**: 'pacbio-raw'
+| ------: | ------ |
+| **`out_dir`** | Directory for output files, will be created if not found |
+| **`lr_dir`** | Directory containing raw long reads (multiple) files in FASTA/Q format, can be gzipped |
+| **`tmp_dir`** | Directory for temp files, will be created if not found. **Default**: `TMPDIR` environment variable |
+| **`prefix`** | Prefix for all output files. **Default**: 'rdna_pipeline' |
+| **`lr_coverage`** | Long reads sequencing depth, used for rDNA copy number estimation |
+| **`lr_to_assembly_bam_path`** | BAM file with all long reads mapped to (draft) genome assembly, used to compute PacBio sequencing depth, if `pacbio_coverage` not provided |
+| **`assembly_path`** | Path to (draft) genome assembly, used as a reference for mapping long reads and sequencing depth estimation, if neither `pacbio_coverage` nor `pacbio_to_assembly_bam_path` provided |
+| **`threads`** | Number of CPUs to use (40 or more recommended). **Default**: number of available CPUs |
+| **`evalue`** | Maximum e-value for predicted rDNA subunits to keep them in the analysis. **Default**: '1e-06' |
+| **`rdna_repeat_size`** | Approximate length of rDNA repeat (rRNA gene + intergenic spacer). Used by Flye assembler,  **Default**: '30k' |
+| **`n_polish_iterations`** | Number of assembly polishing iterations, Flye parameter. **Default**: 3 |
+| **`lr_type`**| Parameter for Flye assembler, possible values: 'pacbio-raw', 'nano-raw'. **Default**: 'pacbio-raw' |
 
 `02_find_rdna_in_genome.sh` ***additional*** arguments:
+
 | Argument | Description |
-| ------ | ------ |
-| **`rdna_operon_path`** | Path to fasta file with rDNA operon. Normally, it is produced in previous pipeline stage.
+| ------: | ------ |
+| **`rdna_operon_path`** | Path to fasta file with rDNA operon. Normally, it is produced in previous pipeline stage. |
 
 ## Output
 All output files are placed in `out_dir` and start with `prefix`. `01_predict_rdna.sh` output:
+
 | Output file | Description
-| ------ | ------
+| ------: | ------
 | rdna_reads.gff | Annotation file with rDNA subunits predictions, barrnap output.
 | rdna_reads.stats | Summary of found rDNA reads.
 | rdna_reads.json | JSON file with rDNA read IDs, grouped by rDNA subunits composition.
@@ -77,8 +80,9 @@ All output files are placed in `out_dir` and start with `prefix`. `01_predict_rd
 | rdna_flye_assembly.fasta | Flye assembler output.
 | rdna_flye_assembly.gff | Predicted rDNA subunits in Flye assembly
 `02_find_rdna_in_genome.sh` output:
+
 | Output file | Description
-| ------ | ------
+| ------: | ------
 | (*genome assembly basename*)_rdna_prediction.gff | Annotation file with rDNA subunit predictions in genome assembly, barrnap output.
 | rdna_operon_to_(*genome assembly basename*).tab | BLAST output with all occurrences of rDNA operon in genome assembly.
 ## Notes
