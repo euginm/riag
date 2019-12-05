@@ -1,6 +1,6 @@
 # rDNA in a Genome
 
-The rDNA-in-a-Genome pipeline perform qualitative and quantitative assessment of rDNA from eukaryotic genome in semi-automatic way. The pipeline is designed to use long sequencing reads and draft assembly of a newly sequenced genome.
+The rDNA-in-a-Genome pipeline performs a qualitative and quantitative assessment of rDNA from a eukaryotic genome in a semi-automatic way. The pipeline is designed to use long sequencing reads and draft assembly of a newly sequenced genome.
 
 ## Pipeline features
 - Finds long reads that contain rDNA subunits (rDNA reads)
@@ -27,7 +27,7 @@ $ ./02_find_rdna_in_genome.sh config.sh
 1. Predict rDNA subunits in every long read.
 2. Quantify and evaluate found rDNA reads, pick best candidates for consensus assembly.
 3. Assemble rDNA consensus sequence from selected rDNA reads.
-4. Estimate number of rDNA copies based on found rDNA reads amount and average long read coverage depth.
+4. Estimate the number of rDNA copies based on found rDNA reads the amount and average long read coverage depth.
 5. Predict rDNA subunits in genome assembly, find rDNA consensus occurrences.
 
 ## Dependencies
@@ -86,12 +86,12 @@ All output files are placed in `out_dir` and start with `prefix`. `01_predict_rd
 | (*genome assembly basename*)_rdna_prediction.gff | Annotation file with rDNA subunit predictions in genome assembly, barrnap output.
 | rdna_operon_to_(*genome assembly basename*).tab | BLAST output with all occurrences of rDNA operon in genome assembly.
 ## Notes
-* This pipeline is disigned to provide an overview of rDNA in an organism. However, it can't substitute a proper rDNA analysis.
-* It worth to review `rdna_reads.stats` file. A big amount of discarded rDNA reads may indicate that the organism has unconventional rDNA subunits composition, HMM-based rDNA predictions does not work properly.
+* This pipeline is designed to provide an overview of rDNA in an organism. However, it can't substitute a proper rDNA analysis.
+* It worth to review `rdna_reads.stats` file. A big amount of discarded rDNA reads may indicate that the organism has unconventional rDNA subunits composition, or HMM-based rDNA predictions do not work properly.
 * If the pipeline exits due to error, it is possible to continue it, by using the same config file.
 
 ## Example run
-In the example run, we will use genomic data and genome assembly of a [leatherback sea turtle][vgp_turtle], provided by [Vertebrate Genomes Project][vgp]) 
+In the example run, we use genomic data and genome assembly of a [leatherback sea turtle][vgp_turtle], provided by [Vertebrate Genomes Project][vgp]) 
 
 Download assembly and PacBio reads:
 ```sh
