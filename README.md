@@ -79,6 +79,7 @@ All output files are placed in `out_dir` and start with `prefix`. `01_predict_rd
 | rdna_reads_for_assembly.fasta | Long reads, selected for rRNA gene consensus assembly.
 | rdna_flye_assembly.fasta | Flye assembler output.
 | rdna_flye_assembly.gff | Predicted rDNA subunits in Flye assembly
+
 `02_find_rdna_in_genome.sh` output:
 
 | Output file | Description
